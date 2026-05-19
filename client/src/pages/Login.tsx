@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -36,16 +36,23 @@ function Login() {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', flexDirection: 'column' }}>
+        <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            flexDirection: 'column'
+        }}>
             <h2>Вход в систему асфальт план</h2>
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', width: '300px', gap: '10px' }}>
+            <form onSubmit={handleLogin}
+                  style={{display: 'flex', flexDirection: 'column', width: '300px', gap: '10px'}}>
                 <input
                     type="email"
                     placeholder="Электронная почта сотрудника"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    style={{ padding: '10px' }}
+                    style={{padding: '10px'}}
                 />
                 <input
                     type="password"
@@ -53,9 +60,15 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    style={{ padding: '10px' }}
+                    style={{padding: '10px'}}
                 />
-                <button type="submit" style={{ padding: '10px', backgroundColor: '#007eae', color: 'white', border: 'none', cursor: 'pointer' }}>
+                <button type="submit" style={{
+                    padding: '10px',
+                    backgroundColor: '#007eae',
+                    color: 'white',
+                    border: 'none',
+                    cursor: 'pointer'
+                }}>
                     Войти
                 </button>
             </form>
