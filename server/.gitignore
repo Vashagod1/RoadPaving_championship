@@ -3,5 +3,9 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+RoadPaving.API/appsettings.json
 
 ../.idea
+
+.env
+.idea

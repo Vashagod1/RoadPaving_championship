@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\RoadPaving.Domain\RoadPaving.Domain.csproj" />
+      <ProjectReference Include="..\RoadPaving.Infrastructure\RoadPaving.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>
