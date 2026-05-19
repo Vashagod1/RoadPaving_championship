@@ -1,17 +1,32 @@
+using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
+using RoadPaving.Infrastructure;
+using RoadPaving.Infrastructure.Extensions;
+using RoadPaving.Infrastructure.Persistence.DataBase;
+
 var builder = WebApplication.CreateBuilder(args);
+var services = builder.Services;
 
-// Add services to the container.
+services.AddControllers();
+services.AddOpenApi();
+services.AddSwaggerGen();
 
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await db.Database.MigrateAsync();
+}
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.MapScalarApiReference();
 }
 
 app.UseHttpsRedirection();
